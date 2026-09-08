@@ -1,0 +1,6 @@
+Flask>=2.0
+numpy>=1.21
+
+# trossen_arm is the Trossen Robotics driver SDK and is not distributed on PyPI.
+# Install it separately following Trossen Robotics' driver installation instructions.
+# trossen_arm
