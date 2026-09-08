@@ -30,6 +30,18 @@ servers themselves do not clash.
 | `trossen_live_data.py` | Arm layer: connection, one flat snapshot per read, and the gravity-mode commands. Also has the demo simulator. |
 | `live_logs/` | Created at runtime. Recordings + `alerts.csv`. |
 
+
+## Setup
+
+```bash
+git clone https://github.com/hcltech-robotics/trossen_arm_monitor_gui.git
+cd trossen_arm_monitor_gui
+pip install -r requirements.txt --break-system-packages
+```
+
+The `trossen_arm` SDK is not on PyPI and must be installed separately — see
+Trossen Robotics' driver installation instructions.
+
 ## Run it
 
 Needs the `trossen_arm` SDK, Flask and numpy — the same environment the other
