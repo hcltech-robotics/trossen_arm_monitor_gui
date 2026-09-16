@@ -78,7 +78,7 @@ HTML_PAGE = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Trossen Arm Live Data Monitor By HCLTech (РШ) </title>
+    <title>Trossen Arm Live Data Monitor By HCLTech </title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -315,7 +315,7 @@ HTML_PAGE = """
 </head>
 <body>
 
-<h1>Trossen Arm Live Data Monitor By HCLTech (РШ)</h1>
+<h1>Trossen Arm Live Data Monitor By HCLTech </h1>
 <p class="subtitle">
     Live data is read-only. <b>The Gravity Mode tab commands the arm</b> — it makes
     the joints back-drivable, so support the arm before enabling it.

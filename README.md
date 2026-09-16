@@ -26,8 +26,9 @@ servers themselves do not clash.
 
 | File | Purpose |
 |---|---|
-| `trossen_live_monitor.py` | Flask app: web UI, endpoints, CSV recorder, gravity routes. **Run this.** |
-| `trossen_live_data.py` | Arm layer: connection, one flat snapshot per read, and the gravity-mode commands. Also has the demo simulator. |
+| `run.sh` | Launcher. **Run this.** Finds `scripts/trossen_live_monitor.py` regardless of your cwd, activates a venv if it finds one. |
+| `scripts/trossen_live_monitor.py` | Flask app: web UI, endpoints, CSV recorder, gravity routes. |
+| `scripts/trossen_live_data.py` | Arm layer: connection, one flat snapshot per read, and the gravity-mode commands. Also has the demo simulator. |
 | `live_logs/` | Created at runtime. Recordings + `alerts.csv`. |
 
 
@@ -39,30 +40,30 @@ cd trossen_arm_monitor_gui
 pip install -r requirements.txt --break-system-packages
 ```
 
-The `trossen_arm` SDK is not on PyPI and must be installed separately — see
-Trossen Robotics' driver installation instructions.
+This installs Flask, numpy and the `trossen_arm` SDK — no separate driver install step needed.
 
 ## Run it
 
-Needs the `trossen_arm` SDK, Flask and numpy — the same environment the other
-Trossen scripts use (`trossen_env`). No extra dependencies.
-
 ```bash
 # real arm
-python3 trossen_live_monitor.py
+./run.sh
 
 # no hardware needed — simulated data, temperatures spike periodically
 # so you can see the red cells, banner and popup alert
-python3 trossen_live_monitor.py --demo
+./run.sh --demo
 ```
+
+`run.sh` activates `.venv/`, `venv/`, or a sibling `../trossen_env/` if one of them exists,
+otherwise it just uses `python3` from your PATH. Equivalent without the launcher:
+`python3 scripts/trossen_live_monitor.py [--demo]`.
 
 Then open **http://127.0.0.1:5001**
 
 Enter the arm IP (defaults to `192.168.1.2`), pick the end effector (defaults to
 `follower`), click **Connect**.
 
-Options: `--port 5001`, `--host 127.0.0.1` (use `--host 0.0.0.0` to view it from
-another machine on the network).
+Options: `./run.sh --port 5001`, `./run.sh --host 127.0.0.1` (use `--host 0.0.0.0` to view it
+from another machine on the network).
 
 ## Stopping it safely
 
@@ -93,7 +94,7 @@ fuser -k 5001/tcp
 Or just use a different port instead of killing anything:
 
 ```bash
-python3 trossen_live_monitor.py --port 5010
+./run.sh --port 5010
 ```
 
 Avoid `pkill -f trossen_live_monitor.py` — `-f` matches whole command lines, so

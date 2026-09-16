@@ -1,0 +1,5 @@
+timestamp,ip,field,value_c,crit_limit_c
+2026-09-16T10:03:45,192.168.1.2,joint4_driver_temp,91.45,75.0
+2026-09-16T10:03:45,192.168.1.2,joint4_rotor_temp,92.51,85.0
+2026-09-16T10:04:05,192.168.1.2,joint5_driver_temp,88.18,75.0
+2026-09-16T10:04:05,192.168.1.2,joint5_rotor_temp,96.79,85.0
